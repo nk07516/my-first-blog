@@ -21,7 +21,11 @@
     </div>
 
     <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post_detail_todisplay.pk %}">Add comment</a>
+
+    {% if post_detail_todisplay.published_date %}
+          <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post_detail_todisplay.pk %}">Add comment</a>
+    {% endif %}
+    
     {% for comment in post_detail_todisplay.comments_for_post.all %}
 
         {% if user.is_authenticated or comment.approved_comment %}
