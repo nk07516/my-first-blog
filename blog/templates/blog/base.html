@@ -10,10 +10,15 @@
 
     <body>
         <div class="page-header">
+            <a href="{% url 'post_list' %}" class = "logo">Natarajan Blog</a>
             {% if user.is_authenticated %}
+                <small class="top-menu">Hello {{ user.username }} (<a href="{% url 'logout' %}">Log out</a>)</small>
+                <a href="{% url 'post_list' %}" class = "top-menu"> <span class="glyphicon glyphicon-home"> </span> </a>
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_draft_list' %}" class = "top-menu"> <span class="glyphicon glyphicon-edit"> </span> </a>
+            {% else %}
+                <a href = "{% url 'login' %}" class ="top-menu"> <span class="glyphicon glyphicon-lock"> </span> </a>
             {% endif %}
-            <h1><a href="">Django Girls Blog</a></h1>
         </div>
 
         <div class = "content container">
